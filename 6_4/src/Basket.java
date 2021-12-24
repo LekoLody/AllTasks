@@ -4,19 +4,19 @@ public class Basket {
 
 
     private static int productCount = 0;
+
+    public static int getWholeTotalPrice() {
+        return wholeTotalPrice;
+    }
+
     private static int wholeTotalPrice = 0;
     private String items = "";
-    private static int totalPrice = 0;
+    private int totalPrice = 0;
     private int limit;
     private static int averagePrice = 0;
 
     public static int getProductCount() {
         return productCount;
-    }
-
-    public static int wholeTotalPrice() {
-        Basket.wholeTotalPrice = Basket.wholeTotalPrice + totalPrice;
-        return wholeTotalPrice;
     }
 
     public static void increaseProductCount(int productCount) {
@@ -58,6 +58,7 @@ public class Basket {
 
     public void add(String name, int price) {
         add(name, price, 1);
+        wholeTotalPrice = wholeTotalPrice + totalPrice;
     }
 
     public void add(String name, int price, int count) {
@@ -75,8 +76,8 @@ public class Basket {
             return;
         }
 
-        increaseCount(1);
         increaseProductCount(1);
+
 
         items = items + "\n" + name + " - " +
                 count + " шт. - " + price;

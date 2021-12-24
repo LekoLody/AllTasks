@@ -7,8 +7,8 @@ public class Main {
         basket.add("Milk", 40);
         basket.add("Koprotoshke", 33);
         basket.print("Milk");
+        System.out.println(Basket.getWholeTotalPrice());
         System.out.println(Basket.getAveragePrice());
-        System.out.println(Basket.wholeTotalPrice());
         System.out.println(Basket.getProductCount());
     }
 }
