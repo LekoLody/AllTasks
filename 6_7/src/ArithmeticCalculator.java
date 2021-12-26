@@ -5,7 +5,7 @@ public class ArithmeticCalculator {
     public int multiply;
     public int subtract;
 
-    public void numbers(int a, int b){
+    public void numbers(int a, int b) {
         this.a = a;
         this.b = b;
     }
@@ -19,7 +19,7 @@ public class ArithmeticCalculator {
         } else if (type == Operation.MULTIPLY) {
             multiply = a * b;
             return multiply;
-        } else if (type == Operation.SUBTRACT){
+        } else if (type == Operation.SUBTRACT) {
             subtract = a - b;
             return subtract;
         }
@@ -27,7 +27,7 @@ public class ArithmeticCalculator {
         return 0;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("Sum = " + sum + "\nMultiplication = " + multiply + "\nSubtraction = " + subtract);
     }
 }
