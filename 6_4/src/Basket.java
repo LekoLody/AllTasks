@@ -1,19 +1,17 @@
 public class Basket {
 
     private static int count = 0;
-
-
     private static int productCount = 0;
-
-    public static int getWholeTotalPrice() {
-        return wholeTotalPrice;
-    }
-
+    private static int averageBasketPrice = 0;
     private static int wholeTotalPrice = 0;
     private String items = "";
     private int totalPrice = 0;
     private int limit;
     private static int averagePrice = 0;
+
+    public static int getWholeTotalPrice() {
+        return wholeTotalPrice;
+    }
 
     public static int getProductCount() {
         return productCount;
@@ -24,12 +22,16 @@ public class Basket {
     }
 
     public static int getAveragePrice() {
-        averagePrice = wholeTotalPrice / count;
+        averagePrice = wholeTotalPrice / productCount;
         return averagePrice;
     }
 
+    public static int getAverageBasketPrice(){
+        averageBasketPrice = wholeTotalPrice / count;
+        return averageBasketPrice;
+    }
+
     public Basket() {
-        increaseCount(1);
         items = "Список товаров:";
         this.limit = 1000000;
     }
@@ -42,8 +44,6 @@ public class Basket {
 
     public Basket(String items, int totalPrice) {
         this();
-        increaseCount(1);
-        increaseProductCount(1);
         this.items = this.items + items;
         this.totalPrice = totalPrice;
     }
@@ -57,11 +57,10 @@ public class Basket {
     }
 
     public void add(String name, int price) {
-        add(name, price, 1);
-        wholeTotalPrice = wholeTotalPrice + totalPrice;
+        add(name, price, 1, 1);
     }
 
-    public void add(String name, int price, int count) {
+    public void add(String name, int price, int count, int productCount) {
         boolean error = false;
         if (contains(name)) {
             error = true;
@@ -76,13 +75,12 @@ public class Basket {
             return;
         }
 
-        increaseProductCount(1);
-
-
         items = items + "\n" + name + " - " +
                 count + " шт. - " + price;
-        totalPrice = totalPrice + count * price;
-
+        totalPrice = totalPrice + productCount * price;
+        increaseProductCount(productCount);
+        increaseCount(count);
+        wholeTotalPrice = wholeTotalPrice + totalPrice;
     }
 
     public void clear() {
