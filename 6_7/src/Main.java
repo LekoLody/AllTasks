@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
-        arithmeticCalculator.numbers(4, 4);
-        System.out.println(arithmeticCalculator.calculate(1, 1, Operation.ADD));
-        System.out.println(arithmeticCalculator.calculate(1, 1, Operation.MULTIPLY));
-        System.out.println(arithmeticCalculator.calculate(1, 1, Operation.SUBTRACT));
-        arithmeticCalculator.print();
+        do
+        arithmeticCalculator.calculate(in.nextInt(),
+                in.nextInt(),
+                Operation.valueOf(in.next()));
+        while (in.nextInt() != 0);
     }
 }

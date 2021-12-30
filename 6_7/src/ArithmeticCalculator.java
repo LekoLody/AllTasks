@@ -15,19 +15,17 @@ public class ArithmeticCalculator {
     public int calculate(int a, int b, Operation type) {
         if (type == Operation.ADD) {
             sum = a + b;
+            System.out.println(a + " + " + b + " = " + sum);
             return sum;
         } else if (type == Operation.MULTIPLY) {
             multiply = a * b;
+            System.out.println(a + " * " + b + " = " + multiply);
             return multiply;
         } else if (type == Operation.SUBTRACT) {
             subtract = a - b;
+            System.out.println(a + " - " + b + " = " + subtract);
             return subtract;
         }
-
-        return 0;
-    }
-
-    public void print() {
-        System.out.println("Sum = " + sum + "\nMultiplication = " + multiply + "\nSubtraction = " + subtract);
+        return -1;
     }
 }
