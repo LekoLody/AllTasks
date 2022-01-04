@@ -13,18 +13,22 @@ public class ArithmeticCalculator {
     public Operation type;
 
     public int calculate(int a, int b, Operation type) {
-        if (type == Operation.ADD) {
-            sum = a + b;
-            System.out.println(a + " + " + b + " = " + sum);
-            return sum;
-        } else if (type == Operation.MULTIPLY) {
-            multiply = a * b;
-            System.out.println(a + " * " + b + " = " + multiply);
-            return multiply;
-        } else if (type == Operation.SUBTRACT) {
-            subtract = a - b;
-            System.out.println(a + " - " + b + " = " + subtract);
-            return subtract;
+        switch (type) {
+            case ADD -> {
+                sum = a + b;
+                System.out.println(a + " + " + b + " = " + sum);
+                return sum;
+            }
+            case MULTIPLY -> {
+                multiply = a * b;
+                System.out.println(a + " * " + b + " = " + multiply);
+                return multiply;
+            }
+            case SUBTRACT -> {
+                subtract = a - b;
+                System.out.println(a + " - " + b + " = " + subtract);
+                return subtract;
+            }
         }
         return -1;
     }
