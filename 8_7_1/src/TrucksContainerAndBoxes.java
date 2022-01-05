@@ -2,26 +2,29 @@ public class TrucksContainerAndBoxes {
 
     public int truckNumber;
 
-    public int getTruckNumber() {
-        if (containerNumber % 27 == 0) {
+    public static final int containerCapacity = 27;
+    public static final int truckCapacity = 12;
+
+    public int getTruckCount() {
+        if (containerNumber % 12 == 0) {
             truckNumber = containerNumber / 12;
         } else truckNumber = containerNumber / 12 + 1;
         return truckNumber;
     }
+    public int containerNumber;
 
     public int getContainerNumber() {
-        if (boxNumber % 27 == 0) {
-            containerNumber = boxNumber / 27;
-        } else containerNumber = boxNumber / 27 + 1;
+        if (totalBoxCount % 27 == 0) {
+            containerNumber = totalBoxCount / 27;
+        } else containerNumber = totalBoxCount / 27 + 1;
         return containerNumber;
     }
 
-    public int containerNumber;
-    public int boxNumber;
+    public int totalBoxCount;
 
     public void distribution(int boxNumber) {
-        this.boxNumber = boxNumber;
+        this.totalBoxCount = boxNumber;
         getContainerNumber();
-        getTruckNumber();
+        getTruckCount();
     }
 }
