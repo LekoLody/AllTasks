@@ -1,9 +1,11 @@
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.Scanner;
 
 public class Main {
     public static TrucksContainerAndBoxes trucksContainerAndBoxes;
 
     public static void main(String[] args) {
+
         Scanner in = new Scanner(System.in);
         trucksContainerAndBoxes = new TrucksContainerAndBoxes();
         trucksContainerAndBoxes.distribution(in.nextInt());
@@ -13,9 +15,9 @@ public class Main {
         for (int truckCounter = 1; truckCounter <= totalTruckCount; truckCounter++) {
             System.out.println("Грузовик: " + truckCounter);
             if (truckCounter == totalTruckCount) {
-                processContainers(TrucksContainerAndBoxes.truckCapacity + spareTruckSpace, totalTruckCount);
+                processContainers(TrucksContainerAndBoxes.truckCapacity + spareTruckSpace, totalTruckCount, true);
             } else {
-                processContainers(TrucksContainerAndBoxes.truckCapacity, totalTruckCount);
+                processContainers(TrucksContainerAndBoxes.truckCapacity, totalTruckCount, false);
             }
 
 
@@ -33,16 +35,16 @@ public class Main {
                 "контейнеров - " + trucksContainerAndBoxes.containerNumber + " шт.");
     }
 
-    private static void processContainers(int maxContainerCount, int totalTruckCount){
+    private static void processContainers(int maxContainerCount, int totalTruckCount, boolean isLastTruck){
         int totalContainerCount = trucksContainerAndBoxes.getContainerNumber();
         for (int containerCounter = 1;
              containerCounter <= maxContainerCount; containerCounter++) {
             System.out.println("\tКонтейнер: " + containerCounter);
-            int spareSpace = trucksContainerAndBoxes.totalBoxCount -
-                    (totalTruckCount * totalContainerCount * TrucksContainerAndBoxes.containerCapacity);
-            if (containerCounter == totalContainerCount) {
+            int lastContainerBoxes = trucksContainerAndBoxes.totalBoxCount -
+                    ((totalContainerCount - 1) * TrucksContainerAndBoxes.containerCapacity * Math.max(totalTruckCount - 1, 1));
+            if (isLastTruck & containerCounter == maxContainerCount) {
                 for (int boxCounter = 1;
-                     boxCounter <= TrucksContainerAndBoxes.containerCapacity + spareSpace;
+                     boxCounter <= lastContainerBoxes;
                      boxCounter++) {
                     System.out.println("\t\tЯщик: " + boxCounter);
                 }
@@ -55,5 +57,4 @@ public class Main {
             }
         }
     }
-
 }
