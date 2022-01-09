@@ -12,8 +12,11 @@ public class Main {
         int currentDay = LocalDate.now().getDayOfMonth();
         Scanner in = new Scanner(System.in);
         NumberAndDays numberAndDays = new NumberAndDays();
-        System.out.println("Введите год, месяц и день:");
-        numberAndDays.collectBirthdays(in.nextInt(), in.nextInt(), in.nextInt());
+        System.out.println("Введите дату через пробел:");
+        int birthdayDay = in.nextInt();
+        int birthdayMonth = in.nextInt();
+        int birthdayYear = in.nextInt();
+        numberAndDays.collectBirthdays(birthdayYear, birthdayMonth, birthdayDay);
         for (j = 0; j <= 0; j += 0) {
             if (numberAndDays.year > currentYear) {
                 System.out.println("Неверный год, введите дату снова:");
@@ -32,8 +35,8 @@ public class Main {
                 numberAndDays.collectBirthdays(in.nextInt(), in.nextInt(), in.nextInt());
             }
             else if(numberAndDays.year == currentYear &
-            numberAndDays.month > currentMonth ||
-            numberAndDays.day > currentDay){
+                    (numberAndDays.month > currentMonth ||
+            numberAndDays.day > currentDay)){
                 System.out.println(("Неверная дата, введите дату снова"));
             numberAndDays.collectBirthdays(in.nextInt(), in.nextInt(), in.nextInt());
             }

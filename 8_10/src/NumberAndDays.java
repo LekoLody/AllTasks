@@ -33,8 +33,8 @@ public class NumberAndDays {
             if (birthday.isBefore(today)) {
                 System.out.println(i + " - " + formatter.format(birthday)+ " - " + birthday.getDayOfWeek());
                 birthday = birthday.plusYears(1);
-            } else if (birthday.isEqual(today)) {
-                System.out.println(i + " - " + birthday + " - " + birthday.getDayOfWeek());
+            } else if (birthday.isAfter(today)) {
+                System.out.println("Ваш возраст: " + (i - 1));
             }
         }
         return "";
